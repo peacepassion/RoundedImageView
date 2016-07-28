@@ -62,6 +62,8 @@ public class RoundedFragment extends Fragment {
     StreamAdapter adapter = new StreamAdapter(getActivity());
 
     adapter.add(new StreamItem(getActivity(),
+        R.drawable.black_white_tile, "TileMode", "REPEAT", ScaleType.FIT_XY));
+    adapter.add(new StreamItem(getActivity(),
         R.drawable.photo1, "Tufa at night", "Mono Lake, CA", ScaleType.CENTER));
     adapter.add(new StreamItem(getActivity(),
         R.drawable.photo2, "Starry night", "Lake Powell, AZ", ScaleType.CENTER_CROP));
@@ -75,15 +77,12 @@ public class RoundedFragment extends Fragment {
         R.drawable.photo6, "Sierra sunset", "Lone Pine, CA", ScaleType.FIT_START));
     adapter.add(new StreamItem(getActivity(),
         R.drawable.photo7, "Majestic", "Grand Teton, WY", ScaleType.FIT_XY));
-    adapter.add(new StreamItem(getActivity(),
-        R.drawable.black_white_tile, "TileMode", "REPEAT", ScaleType.FIT_XY,
-        Shader.TileMode.REPEAT));
-    adapter.add(new StreamItem(getActivity(),
-        R.drawable.black_white_tile, "TileMode", "CLAMP", ScaleType.FIT_XY,
-        Shader.TileMode.CLAMP));
-    adapter.add(new StreamItem(getActivity(),
-        R.drawable.black_white_tile, "TileMode", "MIRROR", ScaleType.FIT_XY,
-        Shader.TileMode.MIRROR));
+    //adapter.add(new StreamItem(getActivity(),
+    //    R.drawable.black_white_tile, "TileMode", "CLAMP", ScaleType.FIT_XY,
+    //    Shader.TileMode.CLAMP));
+    //adapter.add(new StreamItem(getActivity(),
+    //    R.drawable.black_white_tile, "TileMode", "MIRROR", ScaleType.FIT_XY,
+    //    Shader.TileMode.MIRROR));
 
     ((ListView) view.findViewById(R.id.main_list)).setAdapter(adapter);
     return view;
@@ -138,13 +137,11 @@ public class RoundedFragment extends Fragment {
       RoundedImageView iv = ((RoundedImageView) view.findViewById(R.id.imageView1));
       iv.setOval(exampleType == ExampleType.OVAL);
       iv.setImageBitmap(item.mBitmap);
-      iv.setScaleType(item.mScaleType);
       iv.setTileModeX(item.mTileMode);
       iv.setTileModeY(item.mTileMode);
 
       ((TextView) view.findViewById(R.id.textView1)).setText(item.mLine1);
       ((TextView) view.findViewById(R.id.textView2)).setText(item.mLine2);
-      ((TextView) view.findViewById(R.id.textView3)).setText(item.mScaleType.toString());
 
       return view;
     }
